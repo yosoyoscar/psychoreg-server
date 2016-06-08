@@ -1,0 +1,49 @@
+{
+  "name": "behaviour",
+  "plural": "behaviours",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "what": {
+      "type": "string",
+      "required": true
+    },
+    "who": {
+      "type": "string",
+      "required": true,
+      "default": "mother"
+    },
+    "where": {
+      "type": "string",
+      "required": true,
+      "default": "home"
+    },
+    "quantity": {
+      "type": "string",
+      "required": true,
+      "default": "nill"
+    },
+    "mood": {
+      "type": "string",
+      "required": true,
+      "default": "neutral"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "children": {
+      "type": "belongsTo",
+      "model": "child",
+      "foreignKey": "idChild"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

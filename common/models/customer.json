@@ -1,0 +1,24 @@
+{
+  "name": "Customer",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "psycho": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "tokens": {
+      "type": "array",
+      "required": false,
+      "default": []
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

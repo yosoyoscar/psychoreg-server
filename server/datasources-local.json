@@ -1,0 +1,19 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "images": {
+    "name": "images",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./client/"
+  },
+  "cloudant": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "psychoreg",
+    "name": "cloudant",
+    "connector": "mongodb"
+  }
+}

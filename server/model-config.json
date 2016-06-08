@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../node_modules/loopback-ds-timestamp-mixin",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "cloudant",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "cloudant",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "cloudant",
+    "public": false
+  },
+  "Customer": {
+    "dataSource": "cloudant",
+    "public": true
+  },
+  "container": {
+    "dataSource": "images",
+    "public": true
+  },
+  "child": {
+    "dataSource": "cloudant",
+    "public": true
+  },
+  "behaviour": {
+    "dataSource": "cloudant",
+    "public": true
+  }
+}

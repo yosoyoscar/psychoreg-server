@@ -1,0 +1,21 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "images": {
+    "name": "images",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./client/"
+  },
+  "cloudant": {
+    "host": "7f35e92c-0318-4766-a1e6-34d8ab3362d1-bluemix.cloudant.com",
+    "port": 443,
+    "database": "psychoreg",
+    "username": "7f35e92c-0318-4766-a1e6-34d8ab3362d1-bluemix",
+    "password": "54377e53379639c266b671bf0d33500b19eee262d7f961166797e49216007dfb",
+    "name": "cloudant",
+    "connector": "cloudant"
+  }
+}

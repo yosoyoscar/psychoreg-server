@@ -1,0 +1,53 @@
+{
+  "name": "child",
+  "plural": "children",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "sex": {
+      "type": "string",
+      "required": true,
+      "default": "Boy"
+    },
+    "birthDate": {
+      "type": "date",
+      "required": true
+    },
+    "disorder": {
+      "type": "string",
+      "required": true
+    },
+    "comments": {
+      "type": "string"
+    },
+    "token": {
+      "type": "string",
+      "required": true
+    },
+    "idPsycho": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "behaviour": {
+      "type": "hasMany",
+      "model": "behaviour",
+      "foreignKey": "idBehaviour"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

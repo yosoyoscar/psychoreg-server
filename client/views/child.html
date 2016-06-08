@@ -1,0 +1,123 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="#/">Home</a></li>
+                   <li class="active">Add Child</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+                <h3 ng-if="!child.id">New Child</h3>
+                <h3 ng-if="child.id">{{child.firstName}} {{child.lastName}}</h3>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-xs-12 col-md-3" align="center">
+                <img class="img-thumbnail" ng-src="../images/{{child.sex}}.png" alt={{child.firstName}} width="200" >
+                <br><br>
+                <button type="button" class="btn btn-default" ng-click="workInProgress()">Change Picture</button>
+            </div>
+            <div class="col-xs-12 col-md-9">
+                <form class="form-horizontal" ng-submit="addChild()">
+                  <div class="form-group">
+                    <label for="firstName" class="col-sm-2 control-label">First Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="child.firstName" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="child.lastName" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName" class="col-sm-2 control-label">Sex</label>
+                    <div class="col-sm-10">
+                    <label class="radio-inline">
+                      <input type="radio" name="sex" id="Boy" value="Boy" ng-model="child.sex" checked> Boy
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="sex" id="Girl" value="Girl" ng-model="child.sex"> Girl
+                    </label>
+
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="birthDate" class="col-sm-2 control-label">Birth Date</label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control" id="birthDate" placeholder="Birth Date" ng-model="child.birthDate" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <!-- Disorder selection -->
+                    <label for="disorderSelect" class="col-sm-2 control-label">Disorder</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-model="child.disorder">
+                          <option ng-repeat="disorder in disorders">{{disorder}}</option>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="token" class="col-sm-2 control-label">Token</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="token" placeholder="Token" ng-model="child.token" disabled>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="token" class="col-sm-2 control-label">Comments</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" id="comments" placeholder="Comments" rows="5" ng-model="child.comments">Comments</textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-2">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+                    </div>
+                    <div class="col-sm-offset-6 col-sm-2">
+                        <button type="button" class="btn btn-danger" ng-if="child.id" ng-click="doDelete()"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+            <h3>List of Behaviours</h3>
+            <table class="table">
+                <thead>
+                    <th>Date</th>
+                    <th>What</th>
+                    <th>Who</th>
+                    <th>Where</th>
+                    <th>Quantity</th>
+                    <th>Mood</th>
+                </thead>
+                <tbody ng-repeat="behaviour in child.behaviours | orderBy:'-date'">
+                    <td>{{behaviour.date | date:'yyyy-MM-dd HH:mm'}}</td>
+                    <td>{{behaviour.what}}</td>
+
+                    <td ng-if="behaviour.who == 'father'"><i class="fa fa-male" aria-hidden="true"></i> Father</td>
+                    <td ng-if="behaviour.who == 'mother'"><i class="fa fa-female" aria-hidden="true"></i> Mother</td>
+                    <td ng-if="behaviour.who == 'other'"><i class="fa fa-question" aria-hidden="true"></i> Other</td>
+
+                    <td ng-if="behaviour.where == 'home'"><i class="fa fa-home" aria-hidden="true"></i> Home</td>
+                    <td ng-if="behaviour.where == 'school'"><i class="fa fa-graduation-cap" aria-hidden="true"></i> School</td>
+                    <td ng-if="behaviour.where == 'outside'"><i class="fa fa-tree" aria-hidden="true"></i> Outside</td>
+
+                    <td ng-if="behaviour.quantity == 'nill'"><i class="fa fa-battery-empty" aria-hidden="true"></i> Nill</td>
+                    <td ng-if="behaviour.quantity == 'few'"><i class="fa fa-battery-half" aria-hidden="true"></i> Few</td>
+                    <td ng-if="behaviour.quantity == 'all'"><i class="fa fa-battery-full" aria-hidden="true"></i> All</td>
+
+                    <td ng-if="behaviour.mood == 'sad'"><i class="fa fa-frown-o" aria-hidden="true"></i> Sad</td>
+                    <td ng-if="behaviour.mood == 'neutral'"><i class="fa fa-meh-o" aria-hidden="true"></i> Neutral</td>
+                    <td ng-if="behaviour.mood == 'happy'"><i class="fa fa-smile-o" aria-hidden="true"></i> Happy</td>
+                    
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
