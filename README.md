@@ -1,14 +1,17 @@
 # psychoreg
-# npm install
-# npm start
 
+Coursera's Full Stack Web Development Capstone Project - Server & Web app
 
-# lb-ng ../server/server.js js/lb-services.js
-# lb-ng server/server.js lb-services.js
+Tested on Bluemix
 
-# Test users:
-#  {username:'psycho1', password:'1234'}
-#  {username:'psycho2', password:'1234'}
+Useful commands:
+ npm install
+ npm start
+ lb-ng server/server.js lb-services.js
+
+Test users:
+ {username:'psycho1', password:'1234'}
+ {username:'psycho2', password:'1234'}
 
 Known bugs:
- - Deleting a child doesn't delete his/her behaviours
+ Deleting a child doesn't delete his/her behaviours
