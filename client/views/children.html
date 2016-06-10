@@ -12,24 +12,27 @@
       <h3>{{message}}</h3>
     </div>
     <div class="col-xs-12" ng-if="showChildren">
-    <div class="list-group">
-      <label>Filter by: <input ng-model="searchText"></label> <br>
-      <a ui-sref="app.child({id: child.id})" class="list-group-item" ng-repeat="child in children | filter:searchText">
-          <div class="media">
-              <div class="media-left">
-                  <img class="media-object" ng-src="../images/{{child.sex}}.png" alt={{child.firstName}} height="64" width="64" >
+        <div class="list-group">
+          <label>Filter by: <input ng-model="searchText"></label> <br>
+          <a ui-sref="app.child({id: child.id})" class="list-group-item" ng-repeat="child in children | filter:searchText">
+              <div class="media">
+                  <div class="media-left">
+                      <img class="media-object" ng-src="../images/{{child.sex}}.png" alt={{child.firstName}} height="64" width="64" >
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading">{{child.firstName}} {{child.lastName}}</h4>
+                    <p>Disorder: {{child.disorder}}</p>
+                    <p>Token: {{child.token}}</p>
+                    <p>{{child.comments}}</p>
+                      <!-- {{child}} -->
+                  </div>
               </div>
-              <div class="media-body">
-<!--                <h4 class="media-heading">{{child.firstName}} {{child.lastName}} <span class="label label-success">{{child.behaviours.length}}</span></h4>-->
-                <h4 class="media-heading">{{child.firstName}} {{child.lastName}}</h4>
-                <p>Disorder: {{child.disorder}}</p>
-                <p>Token: {{child.token}}</p>
-                <p>{{child.comments}}</p>
-                  <!-- {{child}} -->
-              </div>
-          </div>
-      </a>
-    </div>
-    <p ng-show="!children.length">No children, <a ui-sref="app.child">add one</a></p>
+          </a>
+        </div>
+
+        <div class="alert alert-info" role="alert" align="center" ng-show="!children.length">
+            <h4>No children yet, you can add your <a ui-sref="app.child">first one</a></h4>
+        </div>
+        
     </div>
 </div>
