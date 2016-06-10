@@ -14,24 +14,13 @@
                     <li ng-class="{active: stateis('app')}"><a ui-sref="app">
                         <span class="glyphicon glyphicon-home"
                          aria-hidden="true"></span> Home</a></li>
-<!--                     <li ng-class="{active: stateis('app.aboutus')}"><a ui-sref="app.aboutus">
-                        <span class="glyphicon glyphicon-info-sign"
-                         aria-hidden="true"></span> About</a></li>
-                    <li ng-class="{active: stateis('app.menu') || stateis('app.dishdetails')}"><a ui-sref="app.menu">
-                         <span class="glyphicon glyphicon-list-alt"
-                         aria-hidden="true"></span> 
-                         Menu</a></li>
-                     <li ng-class="{active: stateis('app.favorites')}"><a ui-sref="app.favorites">
-                     <i class="fa fa-heart-o"></i> Favorites</a></li>
-                     <li ng-class="{active: stateis('app.contactus')}"><a ui-sref="app.contactus">
-                     <i class="fa fa-envelope-o"></i> Contact</a></li> -->
-                     <li><a ui-sref="app.children">
+                     <li ng-if="loggedIn" ng-class="{active: stateis('app.children')}"><a ui-sref="app.children">
                         <span class="glyphicon glyphicon-blackboard"
                          aria-hidden="true"></span> Children</a></li>
-                     <li><a ui-sref="app.child">
+                     <li ng-if="loggedIn" ng-class="{active: stateis('app.child')}"><a ui-sref="app.child">
                         <span class="glyphicon glyphicon-plus"
                          aria-hidden="true"></span> Add Child</a></li>
-                    <li><a ui-sref="app.stats">
+                    <li ng-class="{active: stateis('app.stats')}"><a ui-sref="app.stats">
                         <span class="glyphicon glyphicon-stats"
                          aria-hidden="true"></span> Stats</a></li>
                 </ul>
@@ -50,26 +39,4 @@
                 </ul>
             </div>
         </div>
-    </nav>         
-               
-<!--     <header class="jumbotron">
-
-        <div class="container">
-            <div class="row row-header">
-                <div class="col-xs-12 col-sm-8">
-                    <h1>Ristorante con Fusion</h1>
-                    <p style="padding:40px;"></p>
-                    <p>We take inspiration from the World's best cuisines, and create
-                     a unique fusion experience. Our lipsmacking creations will 
-                     tickle your culinary senses!</p>
-                </div>
-                <div class="col-xs-12 col-sm-2">
-                <p style="padding:20px;"></p>
-                <img src="images/logo.png" class="img-responsive">
-                </div>
-                <div class="col-xs-12 col-sm-2">
-                </div>
-            </div>
-        </div>
-    </header>
- -->
+    </nav>
