@@ -9,14 +9,13 @@ angular.module('psychoreg')
         $scope.children = [];
         //console.log('ChildrenController-AuthService.getUsernameId():' + AuthService.getUsernameId());
 
-        // I can't make this damned where clause work! :(
         //$scope.children = Child.find({ where: {idPsycho: {eq: AuthService.getUsernameId()}}});
 
         Child.find()
         .$promise.then(
         function (response) {
             for (var i = response.length - 1; i >= 0; i--) {
-                console.log(response[i].idPsycho + '_' + AuthService.getUsernameId());
+                //console.log(response[i].idPsycho + '_' + AuthService.getUsernameId());
                 if (response[i].idPsycho == AuthService.getUsernameId()){
                     $scope.children.push(response[i]);
                 }
@@ -62,19 +61,6 @@ angular.module('psychoreg')
           }
           console.log('Child:' + JSON.stringify($scope.child));
           Child.upsert($scope.child);
-/*          Customer.findById({id: AuthService.getUsernameId()})
-            .$promise.then(
-                function (response) {
-                    var customer = response;
-                    customer.tokens.push($scope.child.token);
-                    console.log('Customer:' + JSON.stringify(customer));
-                    Customer.prototype.updateAttributes({id: AuthService.getUsernameId(), tokens : customer.tokens});
-                },
-                function (response) {
-                    $scope.message = "Error: " + response.status + " " + response.statusText;
-                    console.log("Error: " + response.status + " " + response.statusText);
-                }
-            );*/
         }
 
         $scope.doDelete = function(){
@@ -87,7 +73,7 @@ angular.module('psychoreg')
             var message = '\
                 <div class="ngdialog-message">\
                 <div><h3>Work in progress</h3></div>' +
-                  '<div><p> Sorry, this does not work yet</p></div>' +
+                  '<div><p> Sorry, this does not work yet</p><p>Please try it later</p></div>' +
                 '<div class="ngdialog-buttons">\
                     <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click=confirm("OK")>OK</button>\
                 </div>'
@@ -138,6 +124,37 @@ angular.module('psychoreg')
     };
     
 }])
+
+.controller('StatsController', ['$scope', 'Customer', 'Child', 'Behaviour', function ($scope, Customer, Child, Behaviour) {
+    $scope.stats = {children:0, behaviours:0, users:0};
+    Child.count()
+    .$promise.then(
+        function (response) {
+            $scope.stats.children = response.count;
+        },
+        function (response) {
+            console.log("Error: " + response.status + " " + response.statusText);
+        }
+    );
+    Behaviour.count()
+    .$promise.then(
+        function (response) {
+            $scope.stats.behaviours = response.count;
+        },
+        function (response) {
+            console.log("Error: " + response.status + " " + response.statusText);
+        }
+    );
+    Customer.count()
+    .$promise.then(
+        function (response) {
+            $scope.stats.users = response.count;
+        },
+        function (response) {
+            console.log("Error: " + response.status + " " + response.statusText);
+        }
+    );
+}])    
 
 .controller('LoginController', ['$scope', 'ngDialog', '$localStorage', 'AuthService', function ($scope, ngDialog, $localStorage, AuthService) {
     

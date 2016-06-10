@@ -45,6 +45,17 @@ angular.module('psychoreg', ['ui.router','ngResource','ngDialog', 'lbServices'])
                 }
             })
         
+            // route for the stats page
+            .state('app.stats', {
+                url:'stats',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/stats.html',
+                        controller  : 'StatsController'
+                    }
+                }
+            })
+        
             ;
     
         $urlRouterProvider.otherwise('/');

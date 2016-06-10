@@ -26,18 +26,22 @@
                      <li ng-class="{active: stateis('app.contactus')}"><a ui-sref="app.contactus">
                      <i class="fa fa-envelope-o"></i> Contact</a></li> -->
                      <li><a ui-sref="app.children">
-                        <span class="glyphicon glyphicon-user"
+                        <span class="glyphicon glyphicon-blackboard"
                          aria-hidden="true"></span> Children</a></li>
                      <li><a ui-sref="app.child">
                         <span class="glyphicon glyphicon-plus"
                          aria-hidden="true"></span> Add Child</a></li>
+                    <li><a ui-sref="app.stats">
+                        <span class="glyphicon glyphicon-stats"
+                         aria-hidden="true"></span> Stats</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-if="!loggedIn"><a ng-click="openLogin()">
                     <span class="glyphicon glyphicon-log-in"></span> Login</a>
                     </li>
                     <li ng-if="loggedIn">
-                    <a>{{username}}</a>
+                    <a><span class="glyphicon glyphicon-user"
+                         aria-hidden="true"></span> {{username}}</a>
                     </li>
                     <li ng-if="loggedIn">
                     <a ng-click="logOut()">
