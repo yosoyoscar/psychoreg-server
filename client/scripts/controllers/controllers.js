@@ -2,31 +2,34 @@
 
 angular.module('psychoreg')
 
-    .controller('ChildrenController', ['$scope','AuthService', 'Child', function($scope, AuthService, Child) {
+    .controller('ChildrenController', ['$scope','AuthService', 'Child', '$rootScope', function($scope, AuthService, Child, $rootScope) {
 
         $scope.showChildren = false;
-        $scope.message = "Loading ...";
         $scope.children = [];
-        //console.log('ChildrenController-AuthService.getUsernameId():' + AuthService.getUsernameId());
-
-        //$scope.children = Child.find({ where: {idPsycho: {eq: AuthService.getUsernameId()}}});
-
-        Child.find()
-        .$promise.then(
-        function (response) {
-            for (var i = response.length - 1; i >= 0; i--) {
-                //console.log(response[i].idPsycho + '_' + AuthService.getUsernameId());
-                if (response[i].idPsycho == AuthService.getUsernameId()){
-                    $scope.children.push(response[i]);
+        
+        var loadChildren = function (){
+            $scope.message = "Loading ...";
+            Child.find()
+            .$promise.then(
+            function (response) {
+                for (var i = response.length - 1; i >= 0; i--) {
+                    if (response[i].idPsycho == AuthService.getUsernameId()){
+                        $scope.children.push(response[i]);
+                    }
                 }
-            }
-            $scope.showChildren = true;
-        },
-        function (response) {
-            $scope.message = "Error: " + response.status + " " + response.statusText;
-            if (response.status == 401){
-                $scope.message = $scope.message + '. Please log in.';
-            }
+                $scope.showChildren = true;
+            },
+            function (response) {
+                $scope.message = "Error: " + response.status + " " + response.statusText;
+            });
+        }
+        
+        if (AuthService.getUsernameId()){
+            loadChildren();
+        };
+
+        $rootScope.$on('login:Successful', function () {
+            loadChildren();
         });
     }])
 
@@ -94,7 +97,7 @@ angular.module('psychoreg')
     else
     {
         var loginData = $localStorage.getObject('userinfo','{}');
-        if (loginData){
+        if (loginData && loginData.username && loginData.password){
             AuthService.login(loginData);
         }
     }
