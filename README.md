@@ -6,14 +6,14 @@ A simple app that will help parents and psychologists to register children's beh
 
 Benefits to psychologists:
 
-● Better diagnosis based on better information.
-● Register information available everywhere.
-● Build recognition among parents and stand out from other psychologists.
+ - Better diagnosis based on better information.
+ - Register information available everywhere.
+ - Build recognition among parents and stand out from other psychologists.
 
 Benefits to parents:
 
-● Mobile app to register their children behaviour, both parents may register the information using their own mobile device, no more need to share a sheet of paper, or merging the information at the end of the day.
-● Quickly register their children's behavior on­demand with just a couple of taps.
+ - Mobile app to register their children behaviour, both parents may register the information using their own mobile device, no more need to share a sheet of paper, or merging the information at the end of the day.
+ - Quickly register their children's behavior on­demand with just a couple of taps.
 
 Tested on Bluemix
 
